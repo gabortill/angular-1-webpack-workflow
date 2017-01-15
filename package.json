@@ -1,0 +1,33 @@
+{
+  "author": "Gábor Till <gabortill84@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/gabortill/angular-1-webpack-workflow/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {},
+  "description": "Front-end workflow for angular 1 projects based on webpack",
+  "devDependencies": {
+    "commitizen": "^2.9.5",
+    "cz-conventional-changelog": "^1.2.0"
+  },
+  "homepage": "https://github.com/gabortill/angular-1-webpack-workflow#readme",
+  "keywords": [
+    "angular 1",
+    "webpack"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "angular-1-webpack-workflow",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabortill/angular-1-webpack-workflow.git"
+  },
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "version": "1.0.0"
+}
