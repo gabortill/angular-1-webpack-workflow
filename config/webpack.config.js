@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const attainment = {};
 attainment.srcDir = path.resolve(__dirname, '../src');
@@ -20,6 +21,7 @@ const plugins = {
     index: new HtmlWebpackPlugin({
         template: attainment.index,
     }),
+    notifier: new WebpackNotifierPlugin(),
 };
 
 module.exports = {
@@ -41,5 +43,6 @@ module.exports = {
     },
     plugins: [
         plugins.index,
+        plugins.notifier,
     ],
 };
