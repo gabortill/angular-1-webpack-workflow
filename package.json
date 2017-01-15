@@ -11,13 +11,13 @@
   "dependencies": {},
   "description": "Front-end workflow for angular 1 projects based on webpack",
   "devDependencies": {
-    "commitizen": "^2.9.5",
-    "cz-conventional-changelog": "^1.2.0",
-    "html-loader": "^0.4.4",
-    "html-webpack-plugin": "^2.26.0",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-notifier": "^1.5.0"
+    "commitizen": "2.9.5",
+    "cz-conventional-changelog": "1.2.0",
+    "html-loader": "0.4.4",
+    "html-webpack-plugin": "2.26.0",
+    "webpack": "1.14.0",
+    "webpack-dev-server": "1.16.2",
+    "webpack-notifier": "1.5.0"
   },
   "homepage": "https://github.com/gabortill/angular-1-webpack-workflow#readme",
   "keywords": [
