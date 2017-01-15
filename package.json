@@ -12,7 +12,11 @@
   "description": "Front-end workflow for angular 1 projects based on webpack",
   "devDependencies": {
     "commitizen": "^2.9.5",
-    "cz-conventional-changelog": "^1.2.0"
+    "cz-conventional-changelog": "^1.2.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.26.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   },
   "homepage": "https://github.com/gabortill/angular-1-webpack-workflow#readme",
   "keywords": [
@@ -27,7 +31,9 @@
     "url": "git+https://github.com/gabortill/angular-1-webpack-workflow.git"
   },
   "scripts": {
-    "commit": "git-cz"
+    "build": "webpack --optimize-minimize --progress --config config/webpack.config.js",
+    "commit": "git-cz",
+    "start": "webpack-dev-server --config config/webpack.config.js --progress --colors --open --inline --hot --history-api-fallback --content-base bin/"
   },
   "version": "1.0.0"
 }
