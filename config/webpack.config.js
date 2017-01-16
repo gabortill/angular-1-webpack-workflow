@@ -13,6 +13,11 @@ attainment.entry = path.join(attainment.srcDir, 'app/root.module.js');
 attainment.index = path.join(attainment.srcDir, 'index.html');
 
 const loaders = {
+    annotate: {
+        include: attainment.srcDir,
+        loader: 'ng-annotate-loader',
+        test: /\.js$/,
+    },
     babel: {
         include: attainment.srcDir,
         loader: 'babel-loader',
@@ -66,6 +71,7 @@ module.exports = {
     },
     module: {
         loaders: [
+            loaders.annotate,
             loaders.babel,
             loaders.index,
         ],
