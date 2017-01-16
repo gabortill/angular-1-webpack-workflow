@@ -1,8 +1,11 @@
 const path = require('path');
+const CleanPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const attainment = {};
+attainment.rootDir = path.resolve(__dirname, '../'),
 attainment.srcDir = path.resolve(__dirname, '../src');
 attainment.distDir = path.resolve(__dirname, '../dist');
 
@@ -26,10 +29,20 @@ const loaders = {
 };
 
 const plugins = {
+    clean: new CleanPlugin([
+        attainment.distDir,
+    ], {
+        root: attainment.rootDir,
+    }),
     index: new HtmlWebpackPlugin({
         template: attainment.index,
     }),
     notifier: new WebpackNotifierPlugin(),
+    uglify: new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false,
+        },
+    }),
 };
 
 module.exports = {
@@ -51,7 +64,9 @@ module.exports = {
         path: attainment.distDir,
     },
     plugins: [
+        plugins.clean,
         plugins.index,
         plugins.notifier,
+        plugins.uglify,
     ],
 };

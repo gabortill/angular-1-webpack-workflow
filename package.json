@@ -17,6 +17,7 @@
     "babel-core": "6.21.0",
     "babel-loader": "6.2.10",
     "babel-preset-latest": "6.16.0",
+    "clean-webpack-plugin": "^0.1.15",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
     "html-loader": "0.4.4",
