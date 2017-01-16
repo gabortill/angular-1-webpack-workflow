@@ -10,6 +10,14 @@ attainment.entry = path.join(attainment.srcDir, 'app/root.module.js');
 attainment.index = path.join(attainment.srcDir, 'index.html');
 
 const loaders = {
+    babel: {
+        include: attainment.srcDir,
+        loader: 'babel-loader',
+        query: {
+            presets: ['latest'],
+        },
+        test: /\.js$/,
+    },
     index: {
         include: attainment.srcDir,
         loader: 'html-loader',
@@ -34,6 +42,7 @@ module.exports = {
     entry: attainment.entry,
     module: {
         loaders: [
+            loaders.babel,
             loaders.index,
         ],
     },

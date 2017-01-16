@@ -8,9 +8,15 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "angular": "1.6.1",
+    "angular-ui-router": "0.3.2"
+  },
   "description": "Front-end workflow for angular 1 projects based on webpack",
   "devDependencies": {
+    "babel-core": "6.21.0",
+    "babel-loader": "6.2.10",
+    "babel-preset-latest": "6.16.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
     "html-loader": "0.4.4",

@@ -1,1 +1,23 @@
-console.log(1);
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+
+angular
+    .module('root', [
+        uiRouter,
+    ])
+    .component('root', {
+        controller: class RootController {
+            constructor() {
+                console.log('root controller');
+            }
+        },
+        template: `
+            <h1>
+                root component
+            </h1>
+        `
+    })
+    .config(($locationProvider, $urlRouterProvider) => {
+        $locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise('/');
+    });
