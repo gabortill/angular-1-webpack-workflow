@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const attainment = {};
-attainment.rootDir = path.resolve(__dirname, '../'),
+attainment.rootDir = path.resolve(__dirname, '../');
 attainment.srcDir = path.resolve(__dirname, '../src');
 attainment.distDir = path.resolve(__dirname, '../dist');
 
@@ -45,6 +45,14 @@ const plugins = {
     }),
 };
 
+const preLoaders = {
+    esLint: {
+        include: attainment.srcDir,
+        loader: 'eslint-loader',
+        test: /\.js$/,
+    },
+};
+
 module.exports = {
     devServer: {
         outputPath: attainment.distDir,
@@ -53,10 +61,16 @@ module.exports = {
     },
     devtool: 'source-map',
     entry: attainment.entry,
+    eslint: {
+        configFile: path.join(__dirname, '.eslintrc.js'),
+    },
     module: {
         loaders: [
             loaders.babel,
             loaders.index,
+        ],
+        preLoaders: [
+            preLoaders.esLint,
         ],
     },
     output: {

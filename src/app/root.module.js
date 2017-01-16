@@ -8,14 +8,14 @@ angular
     .component('root', {
         controller: class RootController {
             constructor() {
-                console.log('root controller');
+                window.console.log('root controller');
             }
         },
         template: `
             <h1>
                 root component
             </h1>
-        `
+        `,
     })
     .config(($locationProvider, $urlRouterProvider) => {
         $locationProvider.html5Mode(true);
