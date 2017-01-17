@@ -26,6 +26,15 @@ const loaders = {
         },
         test: /\.js$/,
     },
+    html: {
+        exclude: attainment.index,
+        include: attainment.srcDir,
+        loader: 'html-loader',
+        query: {
+            minimize: true,
+        },
+        test: /\.html$/,
+    },
     index: {
         include: attainment.srcDir,
         loader: 'html-loader',
@@ -73,6 +82,7 @@ module.exports = {
         loaders: [
             loaders.annotate,
             loaders.babel,
+            loaders.html,
             loaders.index,
         ],
         preLoaders: [
