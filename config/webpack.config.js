@@ -1,5 +1,6 @@
 const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -11,6 +12,7 @@ attainment.distDir = path.resolve(__dirname, '../dist');
 
 attainment.entry = path.join(attainment.srcDir, 'app/root.module.js');
 attainment.index = path.join(attainment.srcDir, 'index.html');
+attainment.sassFiles = path.join(attainment.srcDir, '**/*.scss');
 
 const loaders = {
     annotate: {
@@ -40,6 +42,11 @@ const loaders = {
         loader: 'html-loader',
         test: /^index\.html$/,
     },
+    styles: {
+        include: attainment.srcDir,
+        loader: ExtractPlugin.extract('style', 'css?sourceMap!sass?sourceMap'),
+        test: /\.scss$/,
+    },
 };
 
 const plugins = {
@@ -48,6 +55,7 @@ const plugins = {
     ], {
         root: attainment.rootDir,
     }),
+    extract: new ExtractPlugin('css/styles.[hash].css'),
     index: new HtmlWebpackPlugin({
         template: attainment.index,
     }),
@@ -84,6 +92,7 @@ module.exports = {
             loaders.babel,
             loaders.html,
             loaders.index,
+            loaders.styles,
         ],
         preLoaders: [
             preLoaders.esLint,
@@ -95,8 +104,12 @@ module.exports = {
     },
     plugins: [
         plugins.clean,
+        plugins.extract,
         plugins.index,
         plugins.notifier,
         plugins.uglify,
     ],
+    sassLoader: {
+        outputStyle: 'compressed',
+    },
 };
