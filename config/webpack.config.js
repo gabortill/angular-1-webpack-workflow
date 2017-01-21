@@ -2,6 +2,7 @@ const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SassLintPlugin = require('sasslint-webpack-plugin');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -60,6 +61,10 @@ const plugins = {
         template: attainment.index,
     }),
     notifier: new WebpackNotifierPlugin(),
+    sassLint: new SassLintPlugin({
+        configFile: 'config/.sass-lint.yml',
+        glob: 'src/**/*.scss',
+    }),
     uglify: new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false,
@@ -117,6 +122,7 @@ module.exports = {
         plugins.extract,
         plugins.index,
         plugins.notifier,
+        plugins.sassLint,
         plugins.uglify,
     ],
     sassLoader: {
