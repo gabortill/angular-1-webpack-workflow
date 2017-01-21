@@ -54,10 +54,22 @@
     "type": "git",
     "url": "git+https://github.com/gabortill/angular-1-webpack-workflow.git"
   },
+  "nyc": {
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
   "scripts": {
     "build": "webpack --optimize-minimize --progress --config config/webpack.config.js",
     "commit": "git-cz",
-    "start": "webpack-dev-server --config config/webpack.config.js --progress --colors --open --inline --hot --history-api-fallback --content-base bin/"
+    "start": "webpack-dev-server --config config/webpack.config.js --progress --colors --open --inline --hot --history-api-fallback --content-base bin/",
+    "test": "NODE_ENV=test nyc mocha src/**/*.test.js"
   },
   "version": "1.0.0"
 }
