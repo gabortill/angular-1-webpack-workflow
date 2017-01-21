@@ -73,6 +73,15 @@ const preLoaders = {
         loader: 'eslint-loader',
         test: /\.js$/,
     },
+    htmllint: {
+        exclude: attainment.index,
+        include: attainment.srcDir,
+        loader: 'htmllint-loader',
+        query: {
+            config: path.join(__dirname, '.htmllintrc'),
+        },
+        test: /\.html$/,
+    },
 };
 
 module.exports = {
@@ -96,6 +105,7 @@ module.exports = {
         ],
         preLoaders: [
             preLoaders.esLint,
+            preLoaders.htmllint,
         ],
     },
     output: {
