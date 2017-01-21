@@ -24,9 +24,6 @@ const loaders = {
     babel: {
         include: attainment.srcDir,
         loader: 'babel-loader',
-        query: {
-            presets: ['latest'],
-        },
         test: /\.js$/,
     },
     html: {
