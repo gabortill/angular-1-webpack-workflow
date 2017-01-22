@@ -17,6 +17,7 @@
     "babel-core": "6.21.0",
     "babel-loader": "6.2.10",
     "babel-preset-latest": "6.16.0",
+    "browser-sync": "^2.18.6",
     "clean-webpack-plugin": "0.1.15",
     "commitizen": "2.9.5",
     "css-loader": "0.26.1",
@@ -67,6 +68,7 @@
   },
   "scripts": {
     "build": "webpack --optimize-minimize --progress --config config/webpack.config.js",
+    "build:open": "npm run build && browser-sync start --server dist",
     "commit": "git-cz",
     "start": "webpack-dev-server --config config/webpack.config.js --progress --colors --open --inline --hot --history-api-fallback --content-base bin/",
     "test": "NODE_ENV=test nyc mocha src/**/*.test.js"
