@@ -35,7 +35,7 @@ export default {
 - code coverage generated to `./coverage` folder
 - code coverage overview after every `npm test` in the terminal
 
-#### .scss
+#### .scss - !!! working on a PostCSS replacement
 - lint
 - import to component
 - minify
