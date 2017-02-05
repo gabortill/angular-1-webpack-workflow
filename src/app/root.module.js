@@ -1,4 +1,4 @@
-import './root.scss';
+import './root.css';
 import angular from 'angular';
 import componentsModule from './components/components.module';
 import rootComponent from './root.component';

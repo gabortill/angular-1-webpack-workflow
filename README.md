@@ -12,7 +12,10 @@ npm start
 ## Features
 Import scss files to the module
 ```js
-import './root.scss';
+import './root.css';
+import angular from 'angular';
+
+angular.module('root', []);
 ```
 
 Import html files to the component
@@ -35,8 +38,7 @@ export default {
 - code coverage generated to `./coverage` folder
 - code coverage overview after every `npm test` in the terminal
 
-#### .scss - !!! working on a PostCSS replacement
-- lint
+#### .css
 - import to component
 - minify
 - sourceMap
@@ -65,38 +67,41 @@ src/
     ┣━ root.module.js
     ┣━ root.scss
     ┃
-    ┗━ components/
-        ┣━ components.module.js
-        ┃
-        ┣━ home/
-        ┃   ┣━ home.component.js
-        ┃   ┣━ home.controller.js
-        ┃   ┣━ home.controller.test.js
-        ┃   ┣━ home.html
-        ┃   ┣━ home.module.js
-        ┃   ┣━ home.scss
-        ┃   ┣━ home.service.js
-        ┃   ┗━ home.service.test.js
-        ┃
-        ┗━ calendar/
-            ┣━ calendar.component.js
-            ┣━ calendar.controller.js
-            ┣━ calendar.controller.test.js
-            ┣━ calendar.html
-            ┣━ calendar.module.js
-            ┣━ calendar.scss
-            ┣━ calendar.service.js
-            ┣━ calendar.service.test.js
-            ┃
-            ┗━ calendar-grid/
-                ┣━ calendar-grid.component.js
-                ┣━ calendar-grid.controller.js
-                ┣━ calendar-grid.controller.test.js
-                ┣━ calendar-grid.html
-                ┣━ calendar-grid.module.js
-                ┣━ calendar-grid.scss
-                ┣━ calendar-grid.service.js
-                ┗━ calendar-grid.service.test.js
+    ┣━ components/
+    ┃  ┣━ components.module.js
+    ┃  ┃
+    ┃  ┣━ home/
+    ┃  ┃   ┣━ home.component.js
+    ┃  ┃   ┣━ home.controller.js
+    ┃  ┃   ┣━ home.controller.test.js
+    ┃  ┃   ┣━ home.html
+    ┃  ┃   ┣━ home.module.js
+    ┃  ┃   ┣━ home.scss
+    ┃  ┃   ┣━ home.service.js
+    ┃  ┃   ┗━ home.service.test.js
+    ┃  ┃
+    ┃  ┗━ calendar/
+    ┃      ┣━ calendar.component.js
+    ┃      ┣━ calendar.controller.js
+    ┃      ┣━ calendar.controller.test.js
+    ┃      ┣━ calendar.html
+    ┃      ┣━ calendar.module.js
+    ┃      ┣━ calendar.scss
+    ┃      ┣━ calendar.service.js
+    ┃      ┣━ calendar.service.test.js
+    ┃      ┃
+    ┃      ┗━ calendar-grid/
+    ┃          ┣━ calendar-grid.component.js
+    ┃          ┣━ calendar-grid.controller.js
+    ┃          ┣━ calendar-grid.controller.test.js
+    ┃          ┣━ calendar-grid.html
+    ┃          ┣━ calendar-grid.module.js
+    ┃          ┣━ calendar-grid.scss
+    ┃          ┣━ calendar-grid.service.js
+    ┃          ┗━ calendar-grid.service.test.js
+    ┃
+    ┗━ styles/
+        ┗━ colors.css
 ```
 
 ## Scripts

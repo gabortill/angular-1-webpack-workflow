@@ -1,7 +1,6 @@
 const CleanPlugin = require('clean-webpack-plugin');
-const ExtractPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const SassLintPlugin = require('sasslint-webpack-plugin');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -9,7 +8,6 @@ const path = {
     distDir: `${__dirname}/dist/`,
     entry: `${__dirname}/src/app/root.module.js`,
     index: `${__dirname}/src/index.html`,
-    sassFiles: `${__dirname}/src/**/*.scss`,
     srcDir: `${__dirname}/src/`,
 };
 
@@ -54,11 +52,12 @@ const rules = {
         use: 'html-loader',
     },
     styles: {
-        include: path.srcDir,
-        test: /\.scss$/,
-        use: ExtractPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader?sourceMap!sass-loader?sourceMap',
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            use: [
+                'css-loader?importLoaders=1&minimize&sourceMap',
+                'postcss-loader?sourceMap=inline=false',
+            ],
         }),
     },
 };
@@ -69,14 +68,11 @@ const plugins = {
     ], {
         root: path.rootDir,
     }),
-    extract: new ExtractPlugin('css/styles.[hash].css'),
+    extract: new ExtractTextPlugin('css/styles.[hash].css'),
     index: new HtmlWebpackPlugin({
         template: path.index,
     }),
     notifier: new WebpackNotifierPlugin(),
-    sassLint: new SassLintPlugin({
-        glob: path.sassFiles,
-    }),
     uglify: new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false,
@@ -113,10 +109,6 @@ module.exports = {
         plugins.extract,
         plugins.index,
         plugins.notifier,
-        plugins.sassLint,
         plugins.uglify,
     ],
-    // sassLoader: {
-    //     outputStyle: 'compressed',
-    // },
 };
