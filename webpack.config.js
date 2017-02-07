@@ -1,10 +1,12 @@
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const path = {
+    cssFiles: 'src/**/*.css',
     distDir: `${__dirname}/dist/`,
     entry: `${__dirname}/src/app/root.module.js`,
     index: `${__dirname}/src/index.html`,
@@ -54,10 +56,21 @@ const rules = {
     styles: {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-            use: [
-                'css-loader?importLoaders=1&minimize&sourceMap',
-                'postcss-loader?sourceMap=inline=false',
-            ],
+            use: [{
+                loader: 'css-loader',
+                options: {
+                    'import-loaders': 1,
+                    minimize: true,
+                    sourceMap: true,
+                },
+            }, {
+                loader: 'postcss-loader',
+                options: {
+                    'source-map': {
+                        inline: false,
+                    },
+                },
+            }],
         }),
     },
 };
@@ -73,6 +86,10 @@ const plugins = {
         template: path.index,
     }),
     notifier: new WebpackNotifierPlugin(),
+    stylelint: new StyleLintPlugin({
+        configFile: 'stylelint.config.js',
+        files: path.cssFiles,
+    }),
     uglify: new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false,
@@ -109,6 +126,7 @@ module.exports = {
         plugins.extract,
         plugins.index,
         plugins.notifier,
+        plugins.stylelint,
         plugins.uglify,
     ],
 };
